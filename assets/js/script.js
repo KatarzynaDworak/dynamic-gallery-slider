@@ -1,3 +1,10 @@
+//#38 NA KONSULTACJE: czy to dobry kierunek?
+// #77 NA KONSULTACJE: dlaczego się nie wyświetla nic w konsoli?
+//#89 NA KONSULTACJE: kiedy i jak uzywamy dataset?
+//#82 NA KONSULTACJE: czy "wyszukać ściekę" oznacza takie działanie? 
+// const elementClicked = event.target;
+// const nameClicked = elementClicked.tagName;
+
 const init = function() {
     const imagesList = document.querySelectorAll('.gallery__item');
     imagesList.forEach( img => {
@@ -32,6 +39,7 @@ const initEvents = function(imagesList, sliderRootElement) {
     // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-img-next]
     // na elemencie [.js-slider__nav--next]
     const navNext = sliderRootElement.querySelector('.js-slider__nav--next');
+    const eventImgNext = navNext.addEventListener('click', onImageNext) //#38 NA KONSULTACJE: czy to dobry kierunek?
     
 
     // todo:
@@ -72,8 +80,13 @@ const initCustomEvents = function(imagesList, sliderRootElement, imagesSelector)
 const onImageClick = function(event, sliderRootElement, imagesSelector) {
     // todo:  
     // 1. dodać klasę [.js-slider--active], aby pokazać całą sekcję
-    // 2. wyszukać ściężkę (atrybut [src]) do klikniętego elementu i wstawić do [.js-slider__image]
-    // 3. pobrać nazwę grupy zapisaną w dataset klikniętego elementu
+    sliderRootElement.classList.add('js-slider--active');
+    console.log(sliderRootElement); // #77 NA KONSULTACJE: dlaczego się nie wyświetla nic w konsoli?
+    // 2. wyszukać ścieżkę (atrybut [src]) do klikniętego elementu i wstawić do [.js-slider__image]
+    //#82 NA KONSULTACJE: czy "wyszukać ściekę" oznacza takie działanie? 
+    // const elementClicked = event.target;
+    // const nameClicked = elementClicked.tagName;
+    // 3. pobrać nazwę grupy zapisaną w dataset klikniętego elementu //#83 NA KONSULTACJE: kiedy i jak uzywamy dataset?
     // 4. wyszukać wszystkie zdjęcia należące do danej grupy, które wykorzystasz do osadzenia w dolnym pasku
     // 5. utworzyć na podstawie elementu [.js-slider__thumbs-item--prototype] zawartość dla [.js-slider__thumbs]
     // 6. zaznaczyć przy pomocy klasy [.js-slider__thumbs-image--current], który element jest aktualnie wyświetlany
@@ -106,6 +119,6 @@ const onImagePrev = function(event) {
 
 const onClose = function(event) {
     // todo:
-    // 1. należy usunać klasę [js-slider--active] dla [.js-slider]
-    // 2. należy usunać wszystkie dzieci dla [.js-slider__thumbs] pomijając [.js-slider__thumbs-item--prototype]
+    // 1. należy usunąć klasę [js-slider--active] dla [.js-slider]
+    // 2. należy usunąć wszystkie dzieci dla [.js-slider__thumbs] pomijając [.js-slider__thumbs-item--prototype]
 }
