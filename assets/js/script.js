@@ -1,9 +1,3 @@
-//#38 NA KONSULTACJE: czy to dobry kierunek?
-// #77 NA KONSULTACJE: dlaczego się nie wyświetla nic w konsoli?
-//#89 NA KONSULTACJE: kiedy i jak uzywamy dataset?
-//#82 NA KONSULTACJE: czy "wyszukać ściekę" oznacza takie działanie? 
-// const elementClicked = event.target;
-// const nameClicked = elementClicked.tagName;
 
 const init = function() {
     const imagesList = document.querySelectorAll('.gallery__item');
@@ -39,20 +33,20 @@ const initEvents = function(imagesList, sliderRootElement) {
     // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-img-next]
     // na elemencie [.js-slider__nav--next]
     const navNext = sliderRootElement.querySelector('.js-slider__nav--next');
-    const eventImgNext = navNext.addEventListener('click', onImageNext) //#38 NA KONSULTACJE: czy to dobry kierunek?
+    const eventImgNext = navNext.addEventListener('click', onImageNext) 
     
 
     // todo:
     // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-img-prev]
     // na elemencie [.js-slider__nav--prev]
     const navPrev = sliderRootElement.querySelector('.js-slider__nav--prev');
-    
+    const eventImgPrev = navPrev.addEventListener('click', onImagePrev); 
 
     // todo:
     // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-close]
     // tylko wtedy, gdy użytkownik kliknie w [.js-slider__zoom]
     const zoom = sliderRootElement.querySelector('.js-slider__zoom');
-    
+    const eventImgZoom = zoom.addEventListener('click', onImageClick); 
 }
 
 const fireCustomEvent = function(element, name) {
@@ -81,14 +75,20 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
     // todo:  
     // 1. dodać klasę [.js-slider--active], aby pokazać całą sekcję
     sliderRootElement.classList.add('js-slider--active');
-    console.log(sliderRootElement); // #77 NA KONSULTACJE: dlaczego się nie wyświetla nic w konsoli?
-    // 2. wyszukać ścieżkę (atrybut [src]) do klikniętego elementu i wstawić do [.js-slider__image]
-    //#82 NA KONSULTACJE: czy "wyszukać ściekę" oznacza takie działanie? 
-    // const elementClicked = event.target;
-    // const nameClicked = elementClicked.tagName;
-    // 3. pobrać nazwę grupy zapisaną w dataset klikniętego elementu //#83 NA KONSULTACJE: kiedy i jak uzywamy dataset?
-    // 4. wyszukać wszystkie zdjęcia należące do danej grupy, które wykorzystasz do osadzenia w dolnym pasku
+    console.log(sliderRootElement);
+    //<KONSULTCJE - ma problem z wyszukaniem, jeśli jest zawartość atrybutu itp> 2. wyszukać ścieżkę (atrybut [src]) do klikniętego elementu i wstawić do [.js-slider__image]
+    const elementClicked = event.target;
+    console.log(elementClicked); //ok
+    const nameClicked = elementClicked.tagName;
+    console.log(nameClicked);
+    // 3. pobrać nazwę grupy zapisaną w dataset klikniętego elementu #tagName
+    const sliderGroupName = elementClicked.dataset.sliderGroupName;
+    console.log(elementClicked.dataset.sliderGroupName); // good
+    // <KONSULTACJE pobiera się pusta lista>// 4. wyszukać wszystkie zdjęcia należące do danej grupy, które wykorzystasz do osadzenia w dolnym pasku <KONSULTACJE>
+    const imagesGroupList = document.querySelectorAll('img[sliderGroupName]');
+    console.log(imagesGroupList); //NodeList pusta
     // 5. utworzyć na podstawie elementu [.js-slider__thumbs-item--prototype] zawartość dla [.js-slider__thumbs]
+    
     // 6. zaznaczyć przy pomocy klasy [.js-slider__thumbs-image--current], który element jest aktualnie wyświetlany
     
 }
