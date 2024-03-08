@@ -120,11 +120,11 @@ const onImageNext = function(event) {
     }
 
     // 5. podmienić atrybut o nazwie [src] dla [.js-slider__image]
-    const elementClicked = event.target; //ok
-    const imageClicked = elementClicked.querySelector('img'); //ok
-    const imageClickedPath = imageClicked.getAttribute('src'); //ok 
+    const elementClicked = event.target; 
+    const imageClicked = elementClicked.querySelector('img'); 
+    const imageClickedPath = imageClicked.getAttribute('src'); 
     const sliderImg = document.querySelector('.js-slider__image');
-    sliderImg.setAttribute('src', imageClickedPath); //ok 
+    sliderImg.setAttribute('src', imageClickedPath); 
 }
 
 const onImagePrev = function(event) {
@@ -146,11 +146,11 @@ const onImagePrev = function(event) {
     // 4. przełączyć klasę [.js-slider__thumbs-image--current] do odpowiedniego elementu
     //??
     // 5. podmienić atrybut [src] dla [.js-slider__image]
-    const elementClicked = event.target; //ok
-    const imageClicked = elementClicked.querySelector('img'); //ok
-    const imageClickedPath = imageClicked.getAttribute('src'); //ok 
+    const elementClicked = event.target; 
+    const imageClicked = elementClicked.querySelector('img'); 
+    const imageClickedPath = imageClicked.getAttribute('src');  
     const sliderImg = document.querySelector('.js-slider__image');
-    sliderImg.setAttribute('src', imageClickedPath); //ok 
+    sliderImg.setAttribute('src', imageClickedPath); 
 }
 
 const onClose = function(event) {
