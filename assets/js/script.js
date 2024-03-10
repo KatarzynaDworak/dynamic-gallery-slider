@@ -76,13 +76,16 @@ const initCustomEvents = function(imagesList, sliderRootElement, imagesSelector)
     sliderRootElement.addEventListener('js-slider-close', onClose);
 }
 
-const imgAttrList = [];
+const imgAttrList = []; // tablica przechowująca atrybuty aktualnie wyświetlanej grupy zdjęć
 console.log(imgAttrList);
+
+const childImgList = []; // tablica zawierająca zdjęcia z wyświetlanej grupy
+console.log(childImgList);
 
 const onImageClick = function(event, sliderRootElement, imagesSelector) {
     // todo:  
     // 1. dodać klasę [.js-slider--active], aby pokazać całą sekcję
-    sliderRootElement.classList.add('js-slider--active');
+    sliderRootElement.classList.add('js-slider--active');  //BŁĄD W KONSOLI!!
 
     // 2. wyszukać ścieżkę (atrybut [src]) do klikniętego elementu i wstawić do [.js-slider__image]
     const elementClicked = event.target; //ok
@@ -102,7 +105,6 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
     console.log(figureGroupList); //ok
     //wszystkie <img> należące do danej grupy (wewnątrz wyszukanych <figure>)
     
-    const childImgList = []; // tablica zawierająca zdjęcia z wyświetlanej grupy
     
     figureGroupList.forEach(function(childImg) {
         const allChildImg = childImg.querySelectorAll('img');
@@ -161,24 +163,33 @@ const onImageNext = function(event) {
     // todo:
     // 1. wyszukać aktualny wyświetlany element przy pomocy [.js-slider__thumbs-image--current]
     const currentImg = document.querySelector('.js-slider__thumbs-image--current'); //ok
-   console.log(currentImg); //ok src...3
+    console.log(currentImg); //ok src...3
     // 2. znaleźć element następny do wyświetlenie względem drzewa DOM dla [.js-slider__thumbs]
-    imgAttrList.forEach(function(attr) {
-        currentImg.setAttribute('src', attr); // dodaje się tylko raz z galerii, a nie z grupy wyświetlanej na pasku na dole
-    })
+    const currentAttr = currentImg.getAttribute('src');
+    console.log(currentAttr);
+    const attrIndex = imgAttrList.indexOf(currentAttr);
+    console.log(attrIndex); //1
+    // attrIndex + 1 to następny index w tablicy, zawierający atrybut zdjęcia
 
+    const nextImg = childImgList[attrIndex + 1];
+    console.log(nextImg);  //ok
+    
     // 3. sprawdzić czy ten element istnieje - jeśli nie to [.nextElementSibling] zwróci [null]
-    if(!nextImg) {
-        // 4. przełączyć klasę [.js-slider__thumbs-image--current] do odpowiedniego elementu
-        //??
-    }
-
+    // DO WYJAŚNIENIA
+    // if(currentAttr.nextElementSibling === nextImg) {
+    //     console.log(true);
+    // }
+        // console.log(currentAttr.nextElementSibling); //undefined
+    
+    // 4. przełączyć klasę [.js-slider__thumbs-image--current] do odpowiedniego elementu
+    nextImg.classList.add('js-slider__thumbs-image--current');
+  
+    
     // 5. podmienić atrybut o nazwie [src] dla [.js-slider__image]
-    // const elementClicked = event.target; 
-    // const imageClicked = elementClicked.querySelector('img'); 
-    // const imageClickedPath = imageClicked.getAttribute('src'); 
-    // const sliderImg = document.querySelector('.js-slider__image');
-    // sliderImg.setAttribute('src', imageClickedPath); 
+    
+    imgAttrList.forEach(function(attr) {
+        currentImg.setAttribute('src', attr); // dodaje się TYLKO RAZ z galerii, a nie z grupy wyświetlanej na pasku na dole
+    })
 }
 
 const onImagePrev = function(event) {
@@ -187,24 +198,28 @@ const onImagePrev = function(event) {
     
     // todo:
     // 1. wyszukać aktualny wyświetlany element przy pomocy [.js-slider__thumbs-image--current]
-    const currentImg = document.querySelector('js-slider__thumbs-image--current'); //null
-
+    const currentImg = document.querySelector('.js-slider__thumbs-image--current'); //ok
     // 2. znaleźć element poprzedni do wyświetlenie względem drzewa DOM dla [.js-slider__thumbs]
-    const prevImg = currentImg.previousElementSiblingElementSibling;
-    const imgThumbs = document.querySelector('.js-slider__thumbs');
+    const currentAttr = currentImg.getAttribute('src');
+    console.log(currentAttr);
+    const attrIndex = imgAttrList.indexOf(currentAttr);
+    // attrIndex - 1 to poprzedni index w tablicy, zawierający atrybut zdjęcia
 
+    const prevImg = childImgList[attrIndex - 1];
+    console.log(prevImg); 
     // 3. sprawdzić czy ten element istnieje i czy nie posiada klasy [.js-slider__thumbs-item--prototype]
-    if(prevImg && !(prevImg.className === 'js-slider__thumbs-item--prototype')) {
-
+    if(prevImg) {
+        console.log(true);
+        prevImgClass = prevImg.className;
+        console.log(prevImgClass);
     }
+    
     // 4. przełączyć klasę [.js-slider__thumbs-image--current] do odpowiedniego elementu
-    //??
+    prevImg.classList.add('js-slider__thumbs-image--current');
     // 5. podmienić atrybut [src] dla [.js-slider__image]
-    const elementClicked = event.target; 
-    const imageClicked = elementClicked.querySelector('img'); 
-    const imageClickedPath = imageClicked.getAttribute('src');  
-    const sliderImg = document.querySelector('.js-slider__image');
-    sliderImg.setAttribute('src', imageClickedPath); 
+    imgAttrList.forEach(function(attr) {
+        currentImg.setAttribute('src', attr); // dodaje się TYLKO RAZ z galerii, a nie z grupy wyświetlanej na pasku na dole
+    })
 }
 
 const onClose = function(event) {
@@ -213,7 +228,10 @@ const onClose = function(event) {
     const sliderRootSelector = '.js-slider';
     sliderRootSelector.classList.remove('js-slider--active');
     // 2. należy usunąć wszystkie dzieci dla [.js-slider__thumbs] pomijając [.js-slider__thumbs-item--prototype]
+    
+
     const imgThumbs = document.querySelectorAll('.js-slider__thumbs');
+    console.log(imgThumbs);
     while(imgThumbs.firstChild) {
         if(imgThumbs.firstChild.className !== 'js-slider__thumbs-item--prototype') {
             imgThumbs.removeChild(imgThumbs.firstChild);
