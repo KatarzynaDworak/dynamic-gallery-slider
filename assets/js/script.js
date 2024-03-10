@@ -76,6 +76,9 @@ const initCustomEvents = function(imagesList, sliderRootElement, imagesSelector)
     sliderRootElement.addEventListener('js-slider-close', onClose);
 }
 
+const imgAttrList = [];
+console.log(imgAttrList);
+
 const onImageClick = function(event, sliderRootElement, imagesSelector) {
     // todo:  
     // 1. dodać klasę [.js-slider--active], aby pokazać całą sekcję
@@ -133,7 +136,7 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
     console.log(thumbsImg); 
     
     //dodanie wszystkich obrazków z grupy do paska na dole
-    const imgAttrList = [];
+    // const imgAttrList = [];
     childImgList.forEach(function(addedImg) {
         const addedImgAttr = addedImg.getAttribute('src');
         console.log(addedImgAttr); //ok
@@ -160,19 +163,9 @@ const onImageNext = function(event) {
     const currentImg = document.querySelector('.js-slider__thumbs-image--current'); //ok
    console.log(currentImg); //ok src...3
     // 2. znaleźć element następny do wyświetlenie względem drzewa DOM dla [.js-slider__thumbs]
-    
-    //próby:
-    // const parentCurrentImg = currentImg.parentElement;
-    // console.log(parentCurrentImg);
-    // const currentImgGroupName = parentCurrentImg.getAttribute('data-slider-group-name');
-    // console.log(currentImgGroupName); //null
-    // const test = currentImg.getAttribute('src');
-    // console.log(test);
-    
-    // const elementClicked = event.target;
-    // console.log(elementClicked); // span clicked
-
-
+    imgAttrList.forEach(function(attr) {
+        currentImg.setAttribute('src', attr); // dodaje się tylko raz z galerii, a nie z grupy wyświetlanej na pasku na dole
+    })
 
     // 3. sprawdzić czy ten element istnieje - jeśli nie to [.nextElementSibling] zwróci [null]
     if(!nextImg) {
