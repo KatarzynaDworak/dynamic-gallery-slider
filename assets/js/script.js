@@ -75,6 +75,7 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
     // todo:  
     // 1. dodać klasę [.js-slider--active], aby pokazać całą sekcję
     sliderRootElement.classList.add('js-slider--active');
+
     // 2. wyszukać ścieżkę (atrybut [src]) do klikniętego elementu i wstawić do [.js-slider__image]
     const elementClicked = event.target; //ok
     const imageClicked = elementClicked.querySelector('img'); //ok
@@ -87,16 +88,22 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
 
     // 4. wyszukać wszystkie zdjęcia należące do danej grupy, które wykorzystasz do osadzenia w dolnym pasku 
     const imagesGroupList = document.querySelectorAll('figure[data-slider-group-name="' + sliderGroupName +'"'); //NodeList 8 ok
-    
+    console.log(imagesGroupList); //ok
     // 5. utworzyć na podstawie elementu [.js-slider__thumbs-item--prototype] zawartość dla [.js-slider__thumbs]
     const imgThumbsProto = document.querySelector('.js-slider__thumbs-item--prototype');
-    const imgThumbsProtoHTML = imgThumbsProto.innerHTML; //ok
     const imgThumbs = document.querySelector('.js-slider__thumbs');
+    const imgThumbsProtoHTML = imgThumbsProto.innerHTML; //ok
     imgThumbs.innerHTML = imgThumbsProtoHTML; //ok
 
     // 6. zaznaczyć przy pomocy klasy [.js-slider__thumbs-image--current], który element jest aktualnie wyświetlany
-    const zoom = sliderRootElement.querySelector('.js-slider__zoom');
+    const zoom = sliderRootElement.querySelector('.js-slider__image');
     zoom.classList.add('js-slider__thumbs-image--current'); //ok
+
+    //zrobione na konsultacjach - dodanie klasy:
+    // const testSrc = zoom.getAttribute('src');
+    // console.log(testSrc); // do poprawy
+    // const test2 = document.querySelector('.js-slider__thumbs-image'); // do poprawy
+    // test2.setAttribute('src', testSrc); // do poprawy
 }
 
 const onImageNext = function(event) {
@@ -105,14 +112,15 @@ const onImageNext = function(event) {
     
     // todo:
     // 1. wyszukać aktualny wyświetlany element przy pomocy [.js-slider__thumbs-image--current]
-    const currentImg = document.querySelector('js-slider__thumbs-image--current'); //null
-
+    const currentImg = document.querySelector('.js-slider__thumbs-image--current'); //ok
+   console.log(currentImg); //ok src...3
     // 2. znaleźć element następny do wyświetlenie względem drzewa DOM dla [.js-slider__thumbs]
-    const nextImg = currentImg.nextElementSibling;
-    const imgThumbs = document.querySelector('.js-slider__thumbs');
-    //dodaję następny obrazek <nextImg> do <.js-slider__thumbs> czyli <imgThumbs>
-    imgThumbs.appendChild(nextImg);
-    console.log(imgThumbs);
+    const test = currentImg.getAttribute('src');
+    console.log(test);
+    
+
+
+
     // 3. sprawdzić czy ten element istnieje - jeśli nie to [.nextElementSibling] zwróci [null]
     if(!nextImg) {
         // 4. przełączyć klasę [.js-slider__thumbs-image--current] do odpowiedniego elementu
@@ -120,11 +128,11 @@ const onImageNext = function(event) {
     }
 
     // 5. podmienić atrybut o nazwie [src] dla [.js-slider__image]
-    const elementClicked = event.target; 
-    const imageClicked = elementClicked.querySelector('img'); 
-    const imageClickedPath = imageClicked.getAttribute('src'); 
-    const sliderImg = document.querySelector('.js-slider__image');
-    sliderImg.setAttribute('src', imageClickedPath); 
+    // const elementClicked = event.target; 
+    // const imageClicked = elementClicked.querySelector('img'); 
+    // const imageClickedPath = imageClicked.getAttribute('src'); 
+    // const sliderImg = document.querySelector('.js-slider__image');
+    // sliderImg.setAttribute('src', imageClickedPath); 
 }
 
 const onImagePrev = function(event) {
