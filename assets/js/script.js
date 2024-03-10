@@ -60,6 +60,11 @@ const fireCustomEvent = function(element, name) {
 }
 
 const initCustomEvents = function(imagesList, sliderRootElement, imagesSelector) {
+    // imagesList wszystkie zdjęcia <figure> Node List
+    // sliderRootElement cały kod
+    // imagesSelector - z klasą gallery__item
+    // console.log(sliderRootElement);
+    // console.log(imagesSelector);
     imagesList.forEach(function(img) {
         img.addEventListener('js-slider-img-click', function(event) {
             onImageClick(event, sliderRootElement, imagesSelector);
@@ -78,6 +83,7 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
 
     // 2. wyszukać ścieżkę (atrybut [src]) do klikniętego elementu i wstawić do [.js-slider__image]
     const elementClicked = event.target; //ok
+    console.log(elementClicked);
     const imageClicked = elementClicked.querySelector('img'); //ok
     const imageClickedPath = imageClicked.getAttribute('src'); //ok 
     const sliderImg = document.querySelector('.js-slider__image');
@@ -87,23 +93,62 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
     const sliderGroupName = elementClicked.dataset.sliderGroupName; //good
 
     // 4. wyszukać wszystkie zdjęcia należące do danej grupy, które wykorzystasz do osadzenia w dolnym pasku 
-    const imagesGroupList = document.querySelectorAll('figure[data-slider-group-name="' + sliderGroupName +'"'); //NodeList 8 ok
-    console.log(imagesGroupList); //ok
+    
+    //wszystkie <figure> należące do danej grupy
+    const figureGroupList = document.querySelectorAll('figure[data-slider-group-name="' + sliderGroupName +'"'); //NodeList 8 ok
+    console.log(figureGroupList); //ok
+    //wszystkie <img> należące do danej grupy (wewnątrz wyszukanych <figure>)
+    
+    const childImgList = []; // tablica zawierająca zdjęcia z wyświetlanej grupy
+    
+    figureGroupList.forEach(function(childImg) {
+        const allChildImg = childImg.querySelectorAll('img');
+        console.log(allChildImg);
+        for(let i=0; i<allChildImg.length; i ++) {
+        const eachChildImg = allChildImg[i];
+        console.log(eachChildImg); // ok
+            childImgList.push(eachChildImg);
+        }
+    })
+    console.log(childImgList); // ok
+
     // 5. utworzyć na podstawie elementu [.js-slider__thumbs-item--prototype] zawartość dla [.js-slider__thumbs]
-    const imgThumbsProto = document.querySelector('.js-slider__thumbs-item--prototype');
     const imgThumbs = document.querySelector('.js-slider__thumbs');
+    
+    //DO WYJAŚNIENIA: czy to jest potrzebne?
+    const imgThumbsProto = document.querySelector('.js-slider__thumbs-item--prototype');
     const imgThumbsProtoHTML = imgThumbsProto.innerHTML; //ok
     imgThumbs.innerHTML = imgThumbsProtoHTML; //ok
-
+    console.log(imgThumbs);
+    
     // 6. zaznaczyć przy pomocy klasy [.js-slider__thumbs-image--current], który element jest aktualnie wyświetlany
     const zoom = sliderRootElement.querySelector('.js-slider__image');
     zoom.classList.add('js-slider__thumbs-image--current'); //ok
-
-    //zrobione na konsultacjach - dodanie klasy:
-    // const testSrc = zoom.getAttribute('src');
-    // console.log(testSrc); // do poprawy
-    // const test2 = document.querySelector('.js-slider__thumbs-image'); // do poprawy
-    // test2.setAttribute('src', testSrc); // do poprawy
+    
+    //dodanie aktualnego obrazka do paska na dole
+    const currentImgAtt = zoom.getAttribute('src');
+    console.log(currentImgAtt); 
+    const thumbsImg = document.querySelector('.js-slider__thumbs-image'); 
+    thumbsImg.setAttribute('src', currentImgAtt);
+    console.log(thumbsImg); 
+    
+    //dodanie wszystkich obrazków z grupy do paska na dole
+    const imgAttrList = [];
+    childImgList.forEach(function(addedImg) {
+        const addedImgAttr = addedImg.getAttribute('src');
+        console.log(addedImgAttr); //ok
+        imgAttrList.push(addedImgAttr);
+    })
+    console.log(imgAttrList); // tablica zawierająca wartość <src> aktualnie wyświetlanej grupy
+    
+    childImgList.forEach(function(imgEl) {
+        const thumbsSlider = document.querySelector('.js-slider__thumbs');
+        //zmieniam nazwę klasy na js-slider__thumbs-image
+        imgEl.className = "js-slider__thumbs-image";
+            thumbsSlider.appendChild(imgEl);
+            //DO POPRAWY: w pasku na dole 2x pokazuje się zdjęcie obecnie wyświetlane
+            console.log(thumbsSlider);
+    })
 }
 
 const onImageNext = function(event) {
@@ -115,9 +160,17 @@ const onImageNext = function(event) {
     const currentImg = document.querySelector('.js-slider__thumbs-image--current'); //ok
    console.log(currentImg); //ok src...3
     // 2. znaleźć element następny do wyświetlenie względem drzewa DOM dla [.js-slider__thumbs]
-    const test = currentImg.getAttribute('src');
-    console.log(test);
     
+    //próby:
+    // const parentCurrentImg = currentImg.parentElement;
+    // console.log(parentCurrentImg);
+    // const currentImgGroupName = parentCurrentImg.getAttribute('data-slider-group-name');
+    // console.log(currentImgGroupName); //null
+    // const test = currentImg.getAttribute('src');
+    // console.log(test);
+    
+    // const elementClicked = event.target;
+    // console.log(elementClicked); // span clicked
 
 
 
