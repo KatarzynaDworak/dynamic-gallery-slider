@@ -163,10 +163,9 @@ const onImagePrev = function(event) {
         document.querySelector('.js-slider__image').setAttribute('src', prevElement.querySelector('img').getAttribute('src'));
     }
 }
-//WYŁĄCZYĆ PROPAGACJĘ
+//DZIAŁA
 const onClose = function(event) {
     // todo:
-    //usunięcie propagacji
     event.stopPropagation();
     // 1. należy usunąć klasę [js-slider--active] dla [.js-slider]
     const sliderRootSelector = document.querySelector('.js-slider');
