@@ -33,21 +33,20 @@ const initEvents = function(imagesList, sliderRootElement) {
     // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-img-next]
     // na elemencie [.js-slider__nav--next]
     const navNext = sliderRootElement.querySelector('.js-slider__nav--next');
-    const eventImgNext = navNext.addEventListener('click', onImageNext, true); 
+    const eventImgNext = navNext.addEventListener('click', onImageNext); 
     
 
     // todo:
     // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-img-prev]
     // na elemencie [.js-slider__nav--prev]
     const navPrev = sliderRootElement.querySelector('.js-slider__nav--prev');
-    const eventImgPrev = navPrev.addEventListener('click', onImagePrev, true); 
+    const eventImgPrev = navPrev.addEventListener('click', onImagePrev); 
 
     // todo:
     // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-close]
     // tylko wtedy, gdy użytkownik kliknie w [.js-slider__zoom]
     const zoom = sliderRootElement.querySelector('.js-slider__zoom');
-    console.log(zoom);
-    const eventImgZoom = zoom.addEventListener('click', onClose, true); 
+    const eventImgZoom = zoom.addEventListener('click', onClose); 
 }
 
 const fireCustomEvent = function(element, name) {
@@ -70,8 +69,9 @@ const initCustomEvents = function(imagesList, sliderRootElement, imagesSelector)
 
     sliderRootElement.addEventListener('js-slider-img-next', onImageNext);
     sliderRootElement.addEventListener('js-slider-img-prev', onImagePrev);
-    sliderRootElement.addEventListener('js-slider-close', onClose);
+    sliderRootElement.addEventListener('js-slider-close', onClose, true);
 }
+
 //DZIAŁA
 const onImageClick = function(event, sliderRootElement, imagesSelector) {
     // todo:  
@@ -164,6 +164,8 @@ const onImagePrev = function(event) {
 //WYŁĄCZYĆ PROPAGACJĘ
 const onClose = function(event) {
     // todo:
+    //usunięcie propagacji
+    event.stopPropagation();
     // 1. należy usunąć klasę [js-slider--active] dla [.js-slider]
     const sliderRootSelector = document.querySelector('.js-slider');
     sliderRootSelector.classList.remove('js-slider--active');
