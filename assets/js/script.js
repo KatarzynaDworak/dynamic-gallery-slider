@@ -121,6 +121,7 @@ const onImageClick = function(event, sliderRootElement, imagesSelector) {
 }
 //DZIAŁA
 const onImageNext = function(event) {
+    event.stopPropagation();
     console.log(this, 'onImageNext');
     // [this] wskazuje na element [.js-slider]
     
@@ -144,6 +145,7 @@ const onImageNext = function(event) {
 
 //DZIAŁA
 const onImagePrev = function(event) {
+    event.stopPropagation();
     console.log(this, 'onImagePrev');
     // [this] wskazuje na element [.js-slider]
     
