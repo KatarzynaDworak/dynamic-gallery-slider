@@ -135,12 +135,28 @@ const onImageNext = function(event) {
     // 3. sprawdzić czy ten element istnieje - jeśli nie to [.nextElementSibling] zwróci [null]
     // 4. przełączyć klasę [.js-slider__thumbs-image--current] do odpowiedniego elementu
     // 5. podmienić atrybut o nazwie [src] dla [.js-slider__image]
+    
     if(nextElement) {
         currentImg.classList.remove('js-slider__thumbs-image--current');
         nextElement.querySelector('img').classList.add('js-slider__thumbs-image--current');
     
         document.querySelector('.js-slider__image').setAttribute('src', nextElement.querySelector('img').getAttribute('src'));
     }
+    //ZADANIE DODATKOWE NR 2
+        //tworzę tablicę z img z danej grupy
+        // const elementClicked = event.target;
+        // const sliderGroupName = elementClicked.dataset.sliderGroupName;
+        // //wszystkie <figure> należące do danej grupy
+        // const figureGroupList = document.querySelectorAll('figure[data-slider-group-name="' + sliderGroupName +'"'); //NodeList 8 ok
+        // console.log(figureGroupList);
+        // const imgGroupArray = new Array();
+        // imgGroupArray.push(figureGroupList);
+        // console.log(imgGroupArray);
+        // currentImg.classList.remove('js-slider__thumbs-image--current');
+        // const firstImg = currentImg.parentElement.firstElementChild;
+        // console.log(firstImg);
+        // // firstImg.querySelector('img').classList.add('js-slider__thumbs-image--current');
+        // // document.querySelector('.js-slider__image').setAttribute('src', firstElementChild.querySelector('img').getAttribute('src'));
 }
 
 //DZIAŁA
