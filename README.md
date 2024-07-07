@@ -80,27 +80,27 @@ Example: Filtering and manipulating arrays of data based on user input or predef
 **3. Modular and Scalable Architecture:***
 Example: Using ES6 modules or JavaScript classes to encapsulate functionality and promote code reusability.
 
-   // Module 1: Utilities.js
-   export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-   
-   // Module 2: User.js
-   import { capitalize } from './Utilities.js';
-   
-   export class User {
-       constructor(name) {
-           this.name = capitalize(name);
-       }
-       
-       greet() {
-           console.log(`Hello, ${this.name}!`);
-       }
-   }
-   
-   // Usage
-   import { User } from './User.js';
-   
-   const user1 = new User('john');
-   user1.greet(); // Output: Hello, John!
+      // Module 1: Utilities.js
+      export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+      
+      // Module 2: User.js
+      import { capitalize } from './Utilities.js';
+      
+      export class User {
+          constructor(name) {
+              this.name = capitalize(name);
+          }
+          
+          greet() {
+              console.log(`Hello, ${this.name}!`);
+          }
+      }
+      
+      // Usage
+      import { User } from './User.js';
+      
+      const user1 = new User('john');
+      user1.greet(); // Output: Hello, John!
    
 **4. Responsive Design Integration:**
 Example: Using CSS media queries and JavaScript to adapt the layout and behavior based on screen size.
