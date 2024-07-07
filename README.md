@@ -116,12 +116,12 @@ Example: Using CSS media queries and JavaScript to adapt the layout and behavior
 Example: Providing clear comments, README files, and inline documentation to enhance code readability and facilitate collaboration.
 javascript
 
-   // Function to calculate factorial
-   const factorial = (n) => {
-       // Check for negative numbers
-       if (n < 0) {
-           throw new Error('Factorial of negative numbers is undefined');
-       }
+      // Function to calculate factorial
+      const factorial = (n) => {
+          // Check for negative numbers
+          if (n < 0) {
+              throw new Error('Factorial of negative numbers is undefined');
+          }
        
        // Base case: factorial of 0 is 1
        if (n === 0) {
@@ -130,7 +130,7 @@ javascript
        
        // Recursive case
        return n * factorial(n - 1);
-   }
+      }
 <br />
 <br />
 
