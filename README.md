@@ -47,36 +47,36 @@ Example: Implementing a carousel/slider functionality with smooth transitions an
 **2. Data Handling and Manipulation:**
 Example: Filtering and manipulating arrays of data based on user input or predefined conditions.
 
-   const data = [
-       { id: 1, name: 'John', age: 30 },
-       { id: 2, name: 'Jane', age: 25 },
-       { id: 3, name: 'Doe', age: 35 }
-   ];
-   
-   const filteredData = data.filter(item => item.age > 30);
-   console.log(filteredData);
-   Event-Driven Programming:
-   
-   Example: Handling form submissions and validating user inputs using event listeners.
-   javascript
-   Skopiuj kod
-   const form = document.querySelector('form');
-   
-   form.addEventListener('submit', function(event) {
-       event.preventDefault();
-       const formData = new FormData(this);
-       const username = formData.get('username');
-       const password = formData.get('password');
-       
-       // Validate username and password
-       if (username && password) {
-           // Process form data
-           console.log('Username:', username);
-           console.log('Password:', password);
-       } else {
-           console.error('Invalid username or password');
-       }
-   });
+      const data = [
+          { id: 1, name: 'John', age: 30 },
+          { id: 2, name: 'Jane', age: 25 },
+          { id: 3, name: 'Doe', age: 35 }
+      ];
+      
+      const filteredData = data.filter(item => item.age > 30);
+      console.log(filteredData);
+      Event-Driven Programming:
+      
+      Example: Handling form submissions and validating user inputs using event listeners.
+      javascript
+      Skopiuj kod
+      const form = document.querySelector('form');
+      
+      form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const formData = new FormData(this);
+          const username = formData.get('username');
+          const password = formData.get('password');
+          
+          // Validate username and password
+          if (username && password) {
+              // Process form data
+              console.log('Username:', username);
+              console.log('Password:', password);
+          } else {
+              console.error('Invalid username or password');
+          }
+      });
 **3. Modular and Scalable Architecture:***
 Example: Using ES6 modules or JavaScript classes to encapsulate functionality and promote code reusability.
 
