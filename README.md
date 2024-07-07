@@ -1,114 +1,42 @@
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+# Thanks for viewing my Project ✨
 
-&nbsp;
+## :star: Watch the video: ([))
+<br />
 
+## Main goal of my work was to:
 
+<br />
 
-# JavaScript: Zdarzenia
+## Solutions provided in the project
 
-W tym projekcie zmierzysz się z kodem napisanym przez **innego programistę**.
+<br />
+<br />
 
-Otrzymałeś zadanie, aby utworzyć pokaz slajdów (galerię), który będzie uruchamiany po kliknięciu w wybrane zdjęcie (element `<figure>`, który zawiera element `<img>`). 
+## 🛠️ Languages and Tools used: 
 
-Klient ma już gotową część kodu HTML, CSS oraz JS.
-Prosi Cię, abyś HTML-a i CSS-a nie zmieniał, a w JavaScripcie trzymał się istniejącej już konwencji.
+<img align="left" alt="JavaScript" width="50px" src="https://raw.githubusercontent.com/github/explore/379d8d145b878a5b7a1c2a5b5800b1d82d5c8c8f/topics/javascript/javascript.png" />
 
-Element (obraz), w który będziemy klikać, wygląda następująco:
+<img align="left" alt="HTML5" width="50px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
 
-```html
-<figure class="gallery__item gallery__item--pos1">
-    <img src="./assets/img/1.jpg" alt="1" class="gallery__image">
-    <figcaption class="gallery__caption">źródło: unsplash.com</figcaption>
-</figure>
-```
+<img align="left" alt="CSS3" width="50px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
 
-Natomiast kod HTML do pokazu slajdów prezentuje się w ten sposób:
+<img align="left" alt="Git" width="50px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />
 
-```html
-<section class="js-slider">
-    <header class="js-slider__zoom">
-        <span class="js-slider__nav js-slider__nav--prev">&lt;</span>
-        <span class="js-slider__nav js-slider__nav--next">&gt;</span>
-        <figure class="js-slider__wrapper">
-            <img class="js-slider__image" src="./assets/img/6.jpg" alt="1">
-            <figcaption class="js-slider__caption">źródło: unsplash.com</figcaption>
-        </figure>
-    </header>
-    <footer class="js-slider__thumbs">
-        <figure class="js-slider__thumbs-item js-slider__thumbs-item--prototype">
-            <img class="js-slider__thumbs-image">
-        </figure>
-    </footer>
-</section>
-```
+<img align="left" alt="GitHub" width="50px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
 
-* **.js-slider__zoom** – ma zawierać aktualnie prezentowane zdjęcie
-* **.js-slider__thumbs** – ma zawierać listę zdjęć o tej samej nazwie grupy co kliknięte zdjęcie
+<img align="left" alt="Terminal" width="50px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />
 
-> Nazwa grupy jest przechowywana w atrybucie `data-slider-group-name` i jest generowana automatycznie przez JS, aby zasymulować zmieniający się kod HTML. 
+<img align="left" alt="Visual Studio Code" width="50px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
 
-Efekt po kliknięciu w któryś z obrazów na stronie powinien wyglądać jak na poniższym screenie:
+<br />
+<br />
+<br />
+<br />
 
-![](./assets/img/img1.png)
+## :blue_heart:  You can find me on:
+<br/>
 
-&nbsp;
+[<img align="left" alt="Mateusz Sowa LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/katarzynadworakk/)
 
-> **Uwaga!** Celem tego projektu jest odnalezienie się w cudzym kodzie i wykonanie powierzonego zadania. Pamiętaj, że nad projektem zazwyczaj pracuje kilka osób z różnym doświadczeniem (junior, regular, senior, a nawet lead czy architekt). To powoduje, że miejscami kod może być bardziej skomplikowany. W tym projekcie nie chodzi więc o to, abyś był w stanie taki kod napisać samodzielnie. W tej chwili masz go na tyle rozumieć, aby wykonać swoją część pracy.
-
-&nbsp;
-
-## Implementacja
-
-Nasze rozwiązanie ma się opierać w głównej mierze na własnych eventach (CustomEvent), których nazwy są następujące:
-
-* **js-slider-img-click** – event, który jest uruchamiany po kliknięciu w obrazek na stronie (jest to już zrobione w pliku `script.js`) i ma wyświetlić nasz pokaz slajdów
-
-* **js-slider-img-next** – event, który jest uruchamiany po kliknięciu w prawą strzałkę na stronie i ma pokazać kolejny obrazek (o ile w ogóle istnieje) spośród tych widocznych w miniaturach
-
-* **js-slider-img-prev** – podobnie jak wyżej, tylko chodzi o lewą strzałkę
-
-* **js-slider-close** – event, który jest uruchamiany po kliknięciu w wolną przestrzeń wokół prezentowanego zdjęcia, czyli w element `.js-slider__zoom` (i tylko w ten element! Trzeba uważać na propagację eventów).
-
-Do uruchomienia eventów będziemy używać napisanej już funkcji `fireCustomEvent`:
-
-```javascript
-const fireCustomEvent = function(element, name) {
-    console.log(element.className, '=>', name);
-
-    const event = new CustomEvent(name, {
-        bubbles: true,
-    });
-
-    element.dispatchEvent( event );
-}
-```
-
-Dla ułatwienia funkcja ta posiada `console.log()`, który prezentuje nam informację o tym, jaki event jest odpalany i na jakim elemencie.
-
-Zauważ, że funkcja ta przyjmuje dwa parametry: pierwszy to element, na którym ma być wywołany event, a drugi to nazwa eventu.
-
-> Zapoznaj się dokładnie ze strukturą plików HTML i CSS oraz opisem działań w pliku `./assets/js/script.js` – wszystko to pomoże Ci w zrealizowaniu projektu.
-
-> *Dlaczego w tym projekcie stosujemy Custom Events?* – często otrzymuję takie pytanie, dlatego tutaj na nie odpowiem: przede wszystkim po to, by oswoić się ze sposobem ich działania. Projekt oczywiście mógłby opierać się na zdarzeniach dostępnych w JavaScripcie i działałby tak samo, lecz tutaj kod tworzył inny programista, który miał własny zamysł. Możliwe, że przygotował grunt pod dalszy rozwój projektu. Custom Events zwiększają bowiem elastyczność rozwiązania: umożliwiają [przekazywanie dodatkowych danych](http://kursjs.pl/kurs/events/events-tematy-dodatkowe#customevent) (dzięki właściwości `.details`) oraz [komunikację między elementami](http://kursjs.pl/kurs/events/events-tematy-dodatkowe#po-co) (dzięki propagacji).
-
-&nbsp;
-
-## Zadania dodatkowe
-
-### Zadanie 1
-
-Napisz kod, który pozwoli przełączać obrazki w nieskończoność – jeśli nie ma już następnego obrazka (lub poprzedniego), to po kliknięciu strzałki nawigacji wracamy do początku (lub końca) galerii.
-
-### Zadanie 2
-
-Stwórz kod, który automatycznie, co zadaną ilość czasu, sam przełącza obrazki.
-
-
-
-&nbsp;
-
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+ 
+<br />
