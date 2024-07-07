@@ -105,12 +105,12 @@ Example: Using ES6 modules or JavaScript classes to encapsulate functionality an
 **4. Responsive Design Integration:**
 Example: Using CSS media queries and JavaScript to adapt the layout and behavior based on screen size.
 
-   /* styles.css */
-   @media screen and (max-width: 768px) {
-       .container {
-           flex-direction: column;
-       }
-   }
+      /* styles.css */
+      @media screen and (max-width: 768px) {
+          .container {
+              flex-direction: column;
+          }
+      }
 
 **5. Documentation and Code Quality:**
 Example: Providing clear comments, README files, and inline documentation to enhance code readability and facilitate collaboration.
