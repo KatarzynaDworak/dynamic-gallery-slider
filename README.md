@@ -158,7 +158,13 @@ javascript
 ## :blue_heart:  You can find me on:
 <br/>
 
-[<img align="left" alt="Mateusz Sowa LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/katarzynadworakk/)
+[<img align="left" alt="Katarzyna Dworak LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/katarzynadworakk/)
+
+ 
+<br />
+
+### Thanks
+To my Mentor - devmentor.pl – for creating the task and for the code review.
 
  
 <br />
