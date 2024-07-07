@@ -4,12 +4,12 @@
 <br />
 
 ## Main goal of my work was to:
-1. **Interactive UI Elements:** Create dynamic and interactive user interface elements using JavaScript, enhancing user engagement and experience.
-2. **Data Handling and Manipulation:** Efficiently manage data through manipulation and processing techniques to ensure optimal performance and functionality.
-3. **Event-Driven Programming:** Implement event-driven programming paradigms to respond to user actions and system events seamlessly.
-4. **Modular and Scalable Architecture:** Develop a modular and scalable architecture using JavaScript design patterns to facilitate code maintenance and future enhancements.
-5. **Responsive Design Integration:** Integrate responsive design principles to ensure compatibility and usability across various devices and screen sizes.
-6. **Documentation and Code Quality:** Maintain high-quality code standards and provide comprehensive documentation for easy understanding and collaboration.
+1. **Interactive UI Elements:** create dynamic and interactive user interface elements using JavaScript, enhancing user engagement and experience.
+2. **Data Handling and Manipulation:** efficiently manage data through manipulation and processing techniques to ensure optimal performance and functionality.
+3. **Event-Driven Programming:** implement event-driven programming paradigms to respond to user actions and system events seamlessly.
+4. **Modular and Scalable Architecture:** develop a modular and scalable architecture using JavaScript design patterns to facilitate code maintenance and future enhancements.
+5. **Responsive Design Integration:** integrate responsive design principles to ensure compatibility and usability across various devices and screen sizes.
+6. **Documentation and Code Quality:** maintain high-quality code standards and provide comprehensive documentation for easy understanding and collaboration.
 <br />
 
 ## Solutions provided in the project
