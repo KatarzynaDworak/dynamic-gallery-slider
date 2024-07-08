@@ -155,18 +155,15 @@ javascript
 <br />
 <br />
 
-## :blue_heart:  You can find me on:
-<br/>
+## :blue_heart:  You can find me on: 
+<br />
 
-[<img align="left" alt="Katarzyna Dworak LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/katarzynadworakk/)
+[<img align="left" alt="Katarzyna Dworak LinkedIn" width="40px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/katarzynadworakk/)
 
- 
+<br /> 
 <br />
 
 ### Thanks
 To my Mentor - [devmentor.pl](https://devmentor.pl/) – for creating the task and for the code review.
 
 If you have any questions feel free to get in touch with me (contact in the [profile readme](https://github.com/katarzynadworak)).
-
- 
-<br />
